@@ -7,13 +7,12 @@ def list_division(my_list_1, my_list_2, list_length):
             a = my_list_1[i]
             b = my_list_2[i]
 
-            # Type check: only int/float allowed
-            if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            if (not isinstance(a, (int, float)) or
+                    not isinstance(b, (int, float))):
                 print("wrong type")
                 new_list.append(0)
                 continue
 
-            # Division
             result = a / b
             new_list.append(result)
 
