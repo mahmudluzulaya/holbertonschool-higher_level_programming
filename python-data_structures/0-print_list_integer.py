@@ -3,6 +3,8 @@
 Module: 0-print_list_integer
 Prints all integers in a list, one per line, using str.format()
 """
+
+
 def print_list_integer(my_list=[]):
     """
     Prints all integers in my_list using str.format() with {:d}
