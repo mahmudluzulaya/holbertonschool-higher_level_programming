@@ -1,16 +1,20 @@
 #!/usr/bin/python3
+"""
+Module 0-lookup
+Defines a function that returns the list of available attributes and methods of an object.
+"""
+
 def lookup(obj):
 """
 Returns a list of available attributes and methods of an object.
 
 ```
 Args:
-    obj: Any Python object or class.
+    obj (any): The object or class to inspect.
 
 Returns:
-    List of attribute names and method names of the object.
+    list: Sorted list of attribute names and method names.
 """
-# Use the built-in dir() function to get all attributes and methods
-# of the object or class. This includes inherited attributes.
-return dir(obj)  # dir() returns a sorted list of strings
+# dir() returns all attributes and methods of the object, including inherited ones
+return dir(obj)
 ```
