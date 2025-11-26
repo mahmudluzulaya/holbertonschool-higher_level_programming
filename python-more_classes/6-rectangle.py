@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """This module defines a Rectangle class with width, height, area, perimeter,
-string representation, eval-able representation, deletion message, and instance count.
+string representation, eval-able representation, deletion message,
+and instance count.
 """
 
 
 class Rectangle:
     """Class that defines a rectangle by width and height."""
-    
+
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
