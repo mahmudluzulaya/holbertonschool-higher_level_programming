@@ -27,4 +27,6 @@ class Student:
                     result[a] = getattr(self, a)
             return result
 
-        return self.__dict__.copy()
+        # Return all attributes
+        all_attrs = self.__dict__
+        return {k: all_attrs[k] for k in all_attrs}
