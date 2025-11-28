@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Student class with JSON serialization and deserialization"""
 
+
 class Student:
     """Represents a student with public attributes"""
 
