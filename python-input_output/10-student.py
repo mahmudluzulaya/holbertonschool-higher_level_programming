@@ -26,4 +26,5 @@ class Student:
                 if hasattr(self, a):
                     result[a] = getattr(self, a)
             return result
+
         return self.__dict__.copy()
