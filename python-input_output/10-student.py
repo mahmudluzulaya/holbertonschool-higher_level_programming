@@ -21,9 +21,9 @@ class Student:
         Otherwise, all attributes are included.
         """
         if isinstance(attrs, list) and all(isinstance(a, str) for a in attrs):
-            return {
-                a: getattr(self, a)
-                for a in attrs
-                if hasattr(self, a)
-            }
+            result = {}
+            for a in attrs:
+                if hasattr(self, a):
+                    result[a] = getattr(self, a)
+            return result
         return self.__dict__.copy()
