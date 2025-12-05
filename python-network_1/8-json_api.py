@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Search API that sends a POST request with a letter and handles JSON response."""
+"""Search API that sends a POST request with a letter and handles JSON response.
+If no argument is given, sets q to an empty string.
+"""
 import requests
 import sys
 
