@@ -7,6 +7,8 @@ import os
 
 app = Flask(__name__)
 
+
+# -------- JSON --------
 def read_json():
     try:
         with open("products.json", "r") as f:
@@ -14,6 +16,8 @@ def read_json():
     except Exception as e:
         return {"error": f"JSON Error: {str(e)}"}
 
+
+# -------- CSV --------
 def read_csv():
     products = []
     try:
@@ -30,6 +34,8 @@ def read_csv():
     except Exception as e:
         return {"error": f"CSV Error: {str(e)}"}
 
+
+# -------- SQL --------
 def read_sqlite():
     if not os.path.exists("products.db"):
         return {"error": "Database not found. Please create products.db first."}
@@ -49,13 +55,14 @@ def read_sqlite():
                 "category": r[2],
                 "price": r[3]
             })
-
         return products
     except Exception as e:
         return {"error": f"Database Error: {str(e)}"}
 
-@app.route("/", strict_slashes=False)
-def index():
+
+# -------- MAIN ROUTE --------
+@app.route("/products", strict_slashes=False)
+def products():
     source = request.args.get("source", "json")
 
     if source == "json":
@@ -65,12 +72,14 @@ def index():
     elif source == "sql":
         data = read_sqlite()
     else:
-        return render_template("product_display.html", error="Wrong source")
+        return render_template("product_display.html", error="Wrong source"), 200
 
+    # Error returned from data source
     if isinstance(data, dict) and "error" in data:
-        return render_template("product_display.html", error=data["error"])
+        return render_template("product_display.html", error=data["error"]), 200
 
-    return render_template("product_display.html", products=data)
+    return render_template("product_display.html", products=data), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
